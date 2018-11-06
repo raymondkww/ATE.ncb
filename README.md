@@ -59,7 +59,7 @@ if (sum(fit1$warns)) cat("lambda bound warning!\n")
 
 #### T=0 ####
 
-# compute weights for T=1
+# compute weights for T=0
 fit0 <- ATE.ncb.SN(1-treat, K, lam1s=lams)
 if (sum(fit0$warns)) cat("lambda bound warning!\n")
 
