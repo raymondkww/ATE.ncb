@@ -1,0 +1,10 @@
+Package: ATE.ncb
+Type: Package
+Title: Kernel-based covariate balancing
+Version: 1.2
+Date: 2018-11-06
+Author: Raymond Wong and Gary Chan
+Maintainer: Raymond Wong <raymondkww.dev@gmail.com> and Gary Chan <kcgchan@uw.edu>
+Description: Kernel-based covariate balancing method in Wong and Chan (2018)
+License: GPL (>=2)
+Imports: nloptr, Rglpk

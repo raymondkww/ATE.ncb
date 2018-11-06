@@ -1,0 +1,2 @@
+useDynLib(ATE.ncb)
+export(transform.sob, getGram, ATE.ncb.SN)
