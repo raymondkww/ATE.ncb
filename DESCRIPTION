@@ -7,4 +7,5 @@ Author: Raymond Wong and Gary Chan
 Maintainer: Raymond Wong <raymondkww.dev@gmail.com> and Gary Chan <kcgchan@uw.edu>
 Description: Kernel-based covariate balancing method in Wong and Chan (2018)
 License: GPL (>=2)
-Imports: nloptr, Rglpk
+Imports: nloptr
+Suggests: Rglpk

@@ -55,10 +55,11 @@ check.wbound <- function(w, lower, upper, tol=1e-8){
 #######################
 #### main function ####
 #######################
+# glpk_tm_limit: time limit (in ms) for Rglpk_solve_LP
 
 mineig <- function(w0, N, r, tind, nP1, nq1, lam2, lower=rep(1,length(w0)),
                    upper=rep(Inf, length(w0)), rho0=1e-2, tau0=1e-6, tol=1e-8,
-                   max.iter=500, verbose=F){
+                   max.iter=500, verbose=F, glpk_tm_limit=10000){
   # step 0
   rho <- rho0
   tau <- tau0
@@ -118,8 +119,8 @@ mineig <- function(w0, N, r, tind, nP1, nq1, lam2, lower=rep(1,length(w0)),
 
     # solve linear programming
     dirr <- c(rep("==", tt2), rep(">=", nn-tt))
-    lpres <- Rglpk:::Rglpk_solve_LP(obj=obj, mat=M, dir=dirr, rhs=rhs, bounds=bounds,
-                            control=list("verbose"=F))
+    lpres <- Rglpk::Rglpk_solve_LP(obj=obj, mat=M, dir=dirr, rhs=rhs, bounds=bounds,
+                            control=list("verbose"=F, "tm_limit"=glpk_tm_limit))
 
     # step 2
     # check semi-positivity of U

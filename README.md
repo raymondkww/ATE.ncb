@@ -3,7 +3,15 @@
 This package implements the covariate balancing method proposed in Wong and Chan (2018).
 
 ## Installation
-This package can be installed via function `install_github` in R package `devtools`:
+This package can be installed via function `install_github` in R package `remotes` or `devtools`:
+
+``` r
+install.packages("remotes")
+remotes::install_github("raymondkww/ATE.ncb")
+
+```
+
+or
 
 ``` r
 install.packages("devtools")

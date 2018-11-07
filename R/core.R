@@ -42,6 +42,13 @@ ATE.ncb.core <- function(ind, K, lam1s, lam2s=1e-2*lam1s, lower=1, upper=Inf,
                          thresh.ratio=1e-8, traceit=TRUE, w0=NULL, maxit=2000,
                          maxit2=200, xtol_rel=1e-8, xtol_rel2=1e-4,
                          check=FALSE, full=FALSE){ 
+
+  if (check){
+    if (!requireNamespace("Rglpk", quietly = TRUE)){
+      stop("Package \"Rglpk\" needed for SLP algorithm (check=TRUE) to work. Please install it.", call. = FALSE)
+    }
+  }
+
   N <- length(ind)
   
   # construct a vector
@@ -94,7 +101,7 @@ ATE.ncb.core <- function(ind, K, lam1s, lam2s=1e-2*lam1s, lower=1, upper=Inf,
 
     if (traceit) cat("####", i, ":", "\tlam1 =", lam1s[i], "\tlam2 =", lam2s[i], "\n")
 
-    res <- nloptr:::nloptr(x0=w0, eval_f=eval_obj_grad, lb=lower, ub=upper,
+    res <- nloptr::nloptr(x0=w0, eval_f=eval_obj_grad, lb=lower, ub=upper,
                            N=N, r=r, tind=tind, nP1=nP1, nq1=nq1, lam2=lam2s[i],
                            opts=list(algorithm="NLOPT_LD_LBFGS", xtol_rel=xtol_rel,
                                      print_level=0, maxeval=maxit, check_derivatives=F))
